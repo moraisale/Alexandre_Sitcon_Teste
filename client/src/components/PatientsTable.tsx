@@ -9,21 +9,23 @@ interface IList {
 }
 
 const PatientsTable: React.FC<IList> = ({ patientsList, setPatientId }) => {
-  const [currentPage, setCurrentPage] = useState(1);
   const [searchPatientName, setSearchPatientName] = useState("");
-  const patientsPerPage = 10;
-  const indexOfLastPatient = currentPage * patientsPerPage;
-  const indexOfFirstPatient = indexOfLastPatient - patientsPerPage;
-  const currentPatients = patientsList.slice(
-    indexOfFirstPatient,
-    indexOfLastPatient
-  );
-
   const filteredPatients = searchPatientName
     ? patientsList.filter((patient) =>
         patient.nome.toLowerCase().includes(searchPatientName.toLowerCase())
       )
     : patientsList;
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const patientsPerPage = 10;
+  const indexOfLastPatient = currentPage * patientsPerPage;
+  const indexOfFirstPatient = indexOfLastPatient - patientsPerPage;
+  const currentPatients = filteredPatients.slice(
+    indexOfFirstPatient,
+    indexOfLastPatient
+  );
+
+  console.log(currentPatients);
 
   return (
     <div className="flex flex-col">
@@ -42,7 +44,7 @@ const PatientsTable: React.FC<IList> = ({ patientsList, setPatientId }) => {
             </tr>
           </thead>
           <tbody>
-            {filteredPatients.map((patient, index) => (
+            {currentPatients.map((patient, index) => (
               <tr
                 key={index}
                 className={index % 2 === 0 ? "bg-secondaryBlue" : "bg-white"}
@@ -78,7 +80,7 @@ const PatientsTable: React.FC<IList> = ({ patientsList, setPatientId }) => {
             currentPatients={currentPatients}
             patientsPerPage={patientsPerPage}
             setCurrentPage={setCurrentPage}
-            totalPatients={patientsList.length}
+            totalPatients={filteredPatients.length}
           />
         </div>
       </div>
