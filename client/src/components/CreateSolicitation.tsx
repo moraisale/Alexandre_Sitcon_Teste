@@ -7,17 +7,9 @@ import axios from "axios";
 import { IProcedure } from "../../types/IProcedure";
 import { IProfessional } from "../../types/IProfessional";
 import { useNavigate } from "react-router-dom";
+import { ICreateSolicitationFormData } from "../../types/ICreateSolicitationFormData";
 
 interface IErrors {
-  [key: string]: string;
-}
-
-interface IFormData {
-  selectedProfessional: string;
-  selectedSolicitationType: string;
-  selectedProcedure: string;
-  date: string;
-  time: string;
   [key: string]: string;
 }
 
@@ -26,14 +18,15 @@ export const CreateSolicitation: React.FC<IPatient> = ({
   CPF,
   dataNasc,
 }) => {
-  const initialFormData: IFormData = {
+  const initialFormData: ICreateSolicitationFormData = {
     selectedProfessional: "",
     selectedSolicitationType: "",
     selectedProcedure: "",
     date: "",
     time: "",
   };
-  const [formData, setFormData] = useState<IFormData>(initialFormData);
+  const [formData, setFormData] =
+    useState<ICreateSolicitationFormData>(initialFormData);
   const [errors, setErrors] = useState<IErrors>({});
   const [procedures, setProcedures] = useState<IProcedure[]>([]);
   const [professionals, setProfessionals] = useState<IProfessional[]>([]);
@@ -61,7 +54,6 @@ export const CreateSolicitation: React.FC<IPatient> = ({
         hora: formData.time,
       })
       .then(() => {
-        console.log("Solicitação criada com sucesso!");
         navigate("/solicitacoes");
       });
   };

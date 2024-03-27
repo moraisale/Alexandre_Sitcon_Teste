@@ -1,8 +1,7 @@
 import React from "react";
 import ProjectLayout from "../layouts/ProjectLayout";
-import { SearchBar } from "../src/components/SearchBar";
 import { IPatient } from "../types/IPatient";
-import PatientsTable from "../src/components/PatientsTable";
+import PatientsList from "../src/components/PatientsList";
 
 interface IHomePage {
   setPatientId: React.Dispatch<React.SetStateAction<string>>;
@@ -12,7 +11,7 @@ interface IHomePage {
 const Home: React.FC<IHomePage> = ({ setPatientId, patientsList }) => {
   return (
     <ProjectLayout>
-      <PatientsTable patientsList={patientsList} setPatientId={setPatientId} />
+      <PatientsList patientsList={patientsList} setPatientId={setPatientId} />
     </ProjectLayout>
   );
 };

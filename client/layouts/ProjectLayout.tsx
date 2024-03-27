@@ -1,10 +1,7 @@
 import React from "react";
 import { Header } from "../src/components/Header";
 import { Footer } from "../src/components/Footer";
-
-interface IProjectLayout {
-  children: React.ReactNode;
-}
+import { IProjectLayout } from "../types/IProjectLayout";
 
 const ProjectLayout: React.FC<IProjectLayout> = ({ children }) => {
   return (

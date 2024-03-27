@@ -8,7 +8,7 @@ interface IList {
   patientsList: IPatient[];
 }
 
-const PatientsTable: React.FC<IList> = ({ patientsList, setPatientId }) => {
+const PatientsList: React.FC<IList> = ({ patientsList, setPatientId }) => {
   const [searchPatientName, setSearchPatientName] = useState("");
   const filteredPatients = searchPatientName
     ? patientsList.filter((patient) =>
@@ -24,8 +24,6 @@ const PatientsTable: React.FC<IList> = ({ patientsList, setPatientId }) => {
     indexOfFirstPatient,
     indexOfLastPatient
   );
-
-  console.log(currentPatients);
 
   return (
     <div className="flex flex-col">
@@ -88,4 +86,4 @@ const PatientsTable: React.FC<IList> = ({ patientsList, setPatientId }) => {
   );
 };
 
-export default PatientsTable;
+export default PatientsList;

@@ -16,6 +16,8 @@ const SolicitationsList: React.FC<ISolicitationList> = ({
 }) => {
   const [searchPatientName, setSearchPatientName] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+
+  // calculo da paginaçao
   const [currentPage, setCurrentPage] = useState(1);
   const solicitationsPerPage = 10;
   const indexOfLastSolicitation = currentPage * solicitationsPerPage;
@@ -26,6 +28,7 @@ const SolicitationsList: React.FC<ISolicitationList> = ({
     indexOfLastSolicitation
   );
 
+  // filtro para pesquisar o nome do paciente
   const filteredSolicitations = searchPatientName
     ? currentSolicitation.filter((patient) =>
         patient.nomePaciente

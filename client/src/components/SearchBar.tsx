@@ -1,8 +1,5 @@
 import { IoIosSearch } from "react-icons/io";
-
-interface ISearchBar {
-  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
-}
+import { ISearchBar } from "../../types/ISearchBar";
 
 export const SearchBar: React.FC<ISearchBar> = ({ setSearchValue }) => {
   return (
